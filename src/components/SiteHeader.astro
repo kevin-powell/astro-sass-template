@@ -17,3 +17,52 @@ const { skipTo = "#main" } = Astro.props;
     </div>
   </div>
 </header>
+
+<style lang="scss">
+  @use "../styles/abstracts" as *;
+
+  .site-header {
+    color: $site-header-color;
+    background-color: $site-header-background-color;
+    padding: $site-header-padding;
+
+    &__inner {
+      display: flex;
+      gap: $size-4;
+      align-items: $site-header-alignment;
+      justify-content: $site-header-jusitifcation-small-screens;
+
+      @include mq(medium) {
+        justify-content: $site-header-jusitifcation-large-screens;
+      }
+    }
+  }
+
+  .skip-navigation {
+    position: absolute;
+    transform: translateY(-100%);
+    inset: 0 0 auto 0;
+    width: fit-content;
+
+    color: $skip-nav-color;
+    background-color: $skip-nav-background-color;
+    padding: $skip-nav-padding;
+
+    @if ($skip-nav-position == "center") {
+      margin-inline: auto;
+    } @else if ($skip-nav-position == "right") {
+      margin-inline-start: auto;
+      margin-inline-end: 1rem;
+    } @else {
+      margin-inline-start: 1rem;
+    }
+
+    &:focus {
+      color: $skip-nav-color;
+      background-color: $skip-nav-background-color;
+      transform: translateY(0);
+      outline: $skip-nav-outline-color $skip-nav-outline-size solid;
+      outline-offset: $skip-nav-outline-offset;
+    }
+  }
+</style>

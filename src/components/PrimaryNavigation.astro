@@ -10,3 +10,23 @@
     <li><a href="#">Page 4</a></li>
   </ul>
 </nav>
+
+<style lang="scss">
+  @use "../styles/abstracts" as *;
+  .nav {
+    --flex-column-gap: #{$navigation-gap};
+
+    list-style: none;
+    font-family: $navigation-font-family;
+    font-weight: $navigation-font-weight;
+
+    a {
+      color: $navigation-color;
+      text-decoration: $navigation-link-text-decoration;
+
+      &:is(:hover, :focus) {
+        color: $navigation-color-hover;
+      }
+    }
+  }
+</style>
